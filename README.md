@@ -1,11 +1,11 @@
 # Android 静态代码检查
 Android静态代码检查主要分为四个部分：checkStyle、findbugs、pmd、lint。下面简单介绍，最后对可行性、适用性做讨论。
-##FindBugs
+## FindBugs
 a program which uses static analysis to look for bugs in Java code. 
 The current version of FindBugs is 3.0.1.
 FindBugs requires JRE (or JDK) 1.7.0 or later to run.  However, it can analyze programs compiled for any version of Java, from 1.0 to 1.8.([链接](http://findbugs.sourceforge.net/))
 
-####使用步骤：
+#### 使用步骤：
 ##### gradle 配置
 
 ```
@@ -45,19 +45,19 @@ task findbugs(type: FindBugs,dependsOn:'assembleDebug') {
     }
 }
 ```
-#####执行命令：（以mac为例，Windows下使用gradlew，[参考链接](https://developer.android.com/studio/build/building-cmdline?hl=zh-CN)）
+##### 执行命令：（以mac为例，Windows下使用gradlew，[参考链接](https://developer.android.com/studio/build/building-cmdline?hl=zh-CN)）
 
 ```
 ./gradlew findbugs
 ```
 
-####结果示例
+#### 结果示例
 [以好运为例](http://localhost:63342/6a95tteps56l59rrjbk9bamf539fk4eq4ne9j/FYApp/findbugs.html#SE_BAD_FIELD)
 
-##PMD
+## PMD
 An extensible multilanguage static code analyzer.([github](https://github.com/pmd/pmd))
-####使用步骤
-#####gradle 配置
+#### 使用步骤
+##### gradle 配置
 ```
 apply plugin: 'pmd'
 def configDir = "${project.rootDir}"
@@ -104,18 +104,18 @@ task pmd(type: Pmd) {
     }
 }
 ```
-#####执行命令
+##### 执行命令
 ```
 ./gradlew pmd
 ```
-####结果示例
+#### 结果示例
 [以好运为例](http://localhost:63342/6a95tteps56l59rrjbk9bamf539fk4eq4ne9j/FYApp/pmd.html)
 ## Lint
-####简介
+#### 简介
 Android Studio 提供一个名为 Lint 的代码扫描工具，可帮助您发现并纠正代码结构质量的问题，而无需实际执行该应用，也不必编写测试用例。该工具会报告其检测到的每个问题并提供该问题的描述消息和严重级别，以便您可以快速确定需要优先进行哪些关键改进。此外，您可以调低问题的严重级别，忽略与项目无关的问题，也可以调高严重级别，以突出特定问题。
 
 Lint 工具可检查您的 Android 项目源文件是否包含潜在错误，以及在正确性、安全性、性能、易用性、便利性和国际化方面是否需要优化改进。在使用 Android Studio 时，配置的 Lint 和 IDE 检查会在您每次构建应用时运行。不过，您可以手动运行检查或从命令行运行 Lint。（[摘自Developers网站](https://developer.android.com/studio/write/lint.html)）
-####gradle 配置
+#### gradle 配置
 ```
 lintOptions {
     // Turns off checks for the issue IDs you specify.
@@ -136,14 +136,14 @@ lintOptions {
   }
 ```
 [更多配置](http://google.github.io/android-gradle-dsl/current/com.android.build.gradle.internal.dsl.LintOptions.html)
-####执行命令
+#### 执行命令
 ```
 ./gradlew lint
 ```
 
 
-##自定义lint
-###主要API
+## 自定义lint
+### 主要API
 自定义Lint开发需要调用Lint提供的API，最主要的几个API如下。
 
 Issue：表示一个Lint规则。例如调用Toast.makeText()方法后，没有调用Toast.show()方法将其显示。
@@ -154,7 +154,7 @@ Detector：用于检测并报告代码中的Issue。每个Issue包含一个Detec
 
 Scope：声明Detector要扫描的代码范围，例如Java源文件、XML资源文件、Gradle文件等。每个Issue可包含多个Scope。
 
-###Scanner
+### Scanner
 Scanner：用于扫描并发现代码中的Issue。每个Detector可以实现一到多个Scanner。自定义Lint开发过程中最主要的工作就是实现Scanner。
 Scanner
 Lint中包括多种类型的Scanner如下，其中最常用的是扫描Java源文件和XML文件的Scanner。
@@ -169,8 +169,10 @@ OtherFileScanner：扫描其他类型文件
 
 扫描Java原文件的Scanner，JavaScanner、JavaPsiScanner、UastScanner（支持java，kotlin）
 
-###代码示例：
+### 代码示例：
 
-###改善
+### 改善
 * gradle plugin封装检查配置
 * lint规则封装maven
+
+
