@@ -1,33 +1,34 @@
-apply plugin: 'com.android.library'
-
-android {
-    compileSdkVersion 28
-
-
-    defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
-}
+apply plugin: 'groovy'
+apply plugin: 'maven'
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.tools.build:gradle:3.4.0'
+    implementation gradleApi()
+    implementation localGroovy()
+}
 
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+repositories {
+    google()
+    jcenter()
+}
+
+def VERSION = '0.1.4'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.packaging = project.property("TYPE")
+            pom.groupId = project.property("GROUP_ID")
+            pom.version = VERSION
+            pom.artifactId = project.property("ARTIFACT_ID")
+
+            repository(url: project.property("MAVEN_REPO_RELEASE_URL")) {
+                authentication(userName: project.property("USERNAME"), password: project.property("PASSWORD"))
+            }
+
+            repository(url: project.property("MAVEN_REPO_SNAPSHOT_URL")) {
+                authentication(userName: project.property("USERNAME"), password: project.property("PASSWORD"))
+            }
+        }
+    }
 }
