@@ -12,7 +12,7 @@ repositories {
     jcenter()
 }
 
-def VERSION = '0.1.4'
+def VERSION = '0.1.5'
 
 uploadArchives {
     repositories {

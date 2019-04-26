@@ -7,7 +7,7 @@ class CommonPlugin implements Plugin<Project> {
 
     @Override
     void apply(Project project) {
-        def reportsDir = "$project.buildDir/reports"
+        def reportsDir = "$project.rootDir/reports"
         def configDir = "$project.rootDir"
         def suffix = project.name
 
