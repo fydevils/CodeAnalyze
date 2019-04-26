@@ -5,7 +5,7 @@
 ```
 buildscript {
     dependencies {
-        classpath 'com.foryou.gradle:code-analyze:0.1.4'
+        classpath 'com.foryou.gradle:code-analyze:0.1.5'
     }
 }
 ```
