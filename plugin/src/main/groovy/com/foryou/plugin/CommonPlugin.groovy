@@ -15,6 +15,7 @@ class CommonPlugin implements Plugin<Project> {
             project.android {
                 lintOptions {
                     abortOnError false
+                    disable 'SpUsage', 'ContentDescription', 'SetTextI18n','HardcodedText'
                     xmlReport true
                     htmlReport true
                     htmlOutput project.file("$reportsDir/lint-result-${suffix}.html")

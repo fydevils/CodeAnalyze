@@ -5,12 +5,26 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven {
+            credentials {
+                username 'nanpRL'
+                password 'jEE1TA5jIC'
+            }
+            url 'https://repo.rdc.aliyun.com/repository/49107-release-3gYVam/'
+        }
+        maven {
+            credentials {
+                username 'nanpRL'
+                password 'jEE1TA5jIC'
+            }
+            url 'https://repo.rdc.aliyun.com/repository/49107-snapshot-egC0LB/'
+        }
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.0'
+        classpath 'com.android.tools.build:gradle:3.4.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.foryou.gradle:code-analyze:0.1.4'
+        classpath 'com.foryou.gradle:code-analyze:0.1.5'
     }
 }
 
@@ -18,7 +32,20 @@ allprojects {
     repositories {
         google()
         jcenter()
-
+        maven {
+            credentials {
+                username 'nanpRL'
+                password 'jEE1TA5jIC'
+            }
+            url 'https://repo.rdc.aliyun.com/repository/49107-release-3gYVam/'
+        }
+        maven {
+            credentials {
+                username 'nanpRL'
+                password 'jEE1TA5jIC'
+            }
+            url 'https://repo.rdc.aliyun.com/repository/49107-snapshot-egC0LB/'
+        }
     }
 }
 
